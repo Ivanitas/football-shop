@@ -6,8 +6,8 @@ def show_main(request):
     
     context = {
         'app_name': 'Football Shop',
-        'name': 'Nama Anda',  # Ganti dengan nama Anda
-        'class': 'Kelas Anda',  # Ganti dengan kelas Anda
+        'name': 'Muhammad Iffan Chalif Aziz',  
+        'class': 'PBP-B',  
         'products': products
     }
     
