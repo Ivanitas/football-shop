@@ -1,0 +1,44 @@
+[
+{
+    "model": "main.product",
+    "pk": 1,
+    "fields": {
+        "name": "Football Jersey",
+        "price": 79,
+        "description": "High-quality football jersey with moisture-wicking technology.",
+        "thumbnail": "https://example.com/jersey.jpg",
+        "category": "Jerseys",
+        "is_featured": true,
+        "stock": 50,
+        "brand": "Nike"
+    }
+},
+{
+    "model": "main.product",
+    "pk": 2,
+    "fields": {
+        "name": "Football Boots",
+        "price": 129,
+        "description": "Professional football boots with enhanced grip and comfort.",
+        "thumbnail": "https://example.com/boots.jpg",
+        "category": "Footwear",
+        "is_featured": true,
+        "stock": 30,
+        "brand": "Adidas"
+    }
+},
+{
+    "model": "main.product",
+    "pk": 3,
+    "fields": {
+        "name": "Football",
+        "price": 45,
+        "description": "Official match football with perfect weight and balance.",
+        "thumbnail": "https://example.com/football.jpg",
+        "category": "Equipment",
+        "is_featured": false,
+        "stock": 100,
+        "brand": "Puma"
+    }
+}
+]
