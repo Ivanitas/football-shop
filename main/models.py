@@ -1,17 +1,16 @@
 from django.db import models
-from django.db.models.signals import post_migrate
-from django.dispatch import receiver
+from django.utils import timezone
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
-    price = models.IntegerField()
     description = models.TextField()
-    thumbnail = models.URLField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.CharField(max_length=100)
+    stock = models.IntegerField()
+    brand = models.CharField(max_length=100)
+    thumbnail = models.URLField()
     is_featured = models.BooleanField(default=False)
-    stock = models.IntegerField(default=0)
-    brand = models.CharField(max_length=100, blank=True)
+    date_added = models.DateTimeField(default=timezone.now)  
     
     def __str__(self):
         return self.name
-
