@@ -5,6 +5,9 @@ app_name = 'main'
 
 urlpatterns = [
     path('', views.show_main, name='show_main'),
+    path('register/', views.register, name='register'),
+    path('login/', views.login_user, name='login'),
+    path('logout/', views.logout_user, name='logout'),
     path('json/', views.view_json, name='view_json'),
     path('xml/', views.view_xml, name='view_xml'),
     path('json/<int:id>/', views.view_json_by_id, name='view_json_by_id'),

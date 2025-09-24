@@ -19,6 +19,14 @@
     <div class="container mt-4">
         <h1>Welcome to {{ app_name }}</h1>
         <p>Created by {{ name }} from {{ class }}</p>
+
+        
+        <!-- Tambahkan bagian ini untuk info user -->
+        <div class="user-info mb-4 p-3 bg-light rounded">
+            <p class="mb-1">Logged in as: <strong>{{ username }}</strong></p>
+            <p class="mb-1">Last login: {{ last_login }}</p>
+            <a href="{% url 'main:logout' %}" class="btn btn-danger btn-sm">Logout</a>
+        </div>
         
         <h2 class="mt-4">Our Products</h2>
         <div class="row">
