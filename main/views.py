@@ -42,35 +42,35 @@ def logout_user(request):
 
 @login_required(login_url='/login')
 def show_main(request):
-    products = Product.objects.filter(user=request.user)  # FILTER BY USER
+    products = Product.objects.filter(user=request.user)
     
     context = {
-        'app_name': 'Football Shop',
-        'name' : 'Muhammad Iffan Chalif Aziz',
-        'username': request.user.username,  # PAKAI USERNAME USER YANG LOGIN
-        'class': 'PBP-B',
+        'app_name': 'Cosmic Store',
+        'name': 'abhiseka.susanto',
+        'username': request.user.username,
+        'class': 'PBP A',
         'products': products,
         'last_login': request.COOKIES.get('last_login', 'Never'),
     }
     return render(request, 'main/main.html', context)
 
 def view_json(request):
-    data = Product.objects.filter(user=request.user)  # FILTER BY USER
+    data = Product.objects.filter(user=request.user)
     json_data = serializers.serialize("json", data)
     return HttpResponse(json_data, content_type="application/json")
 
 def view_xml(request):
-    data = Product.objects.filter(user=request.user)  # FILTER BY USER
+    data = Product.objects.filter(user=request.user)
     xml_data = serializers.serialize("xml", data)
     return HttpResponse(xml_data, content_type="application/xml")
 
 def view_json_by_id(request, id):
-    data = get_object_or_404(Product, pk=id, user=request.user)  # FILTER BY USER
+    data = get_object_or_404(Product, pk=id, user=request.user)
     json_data = serializers.serialize("json", [data])
     return HttpResponse(json_data, content_type="application/json")
 
 def view_xml_by_id(request, id):
-    data = get_object_or_404(Product, pk=id, user=request.user)  # FILTER BY USER
+    data = get_object_or_404(Product, pk=id, user=request.user)
     xml_data = serializers.serialize("xml", [data])
     return HttpResponse(xml_data, content_type="application/xml")
 
@@ -80,8 +80,9 @@ def create_product(request):
         form = ProductForm(request.POST)
         if form.is_valid():
             product = form.save(commit=False)
-            product.user = request.user  # SET USER YANG LOGIN
+            product.user = request.user
             product.save()
+            messages.success(request, 'Product created successfully!')
             return redirect('main:show_main')
     else:
         form = ProductForm()
@@ -89,5 +90,31 @@ def create_product(request):
 
 @login_required(login_url='/login')
 def show_detail(request, id):
-    product = get_object_or_404(Product, pk=id, user=request.user)  # FILTER BY USER
+    product = get_object_or_404(Product, pk=id, user=request.user)
     return render(request, 'main/detail.html', {'product': product})
+
+@login_required(login_url='/login')
+def edit_product(request, id):
+    product = get_object_or_404(Product, pk=id, user=request.user)
+    
+    if request.method == 'POST':
+        form = ProductForm(request.POST, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Product updated successfully!')
+            return redirect('main:show_main')
+    else:
+        form = ProductForm(instance=product)
+    
+    return render(request, 'main/edit_product.html', {'form': form})
+
+@login_required(login_url='/login')
+def delete_product(request, id):
+    product = get_object_or_404(Product, pk=id, user=request.user)
+    
+    if request.method == 'POST':
+        product.delete()
+        messages.success(request, 'Product deleted successfully!')
+        return redirect('main:show_main')
+    
+    return render(request, 'main/delete_product.html', {'product': product})

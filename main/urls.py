@@ -14,4 +14,6 @@ urlpatterns = [
     path('xml/<int:id>/', views.view_xml_by_id, name='view_xml_by_id'),
     path('create/', views.create_product, name='create_product'),
     path('detail/<int:id>/', views.show_detail, name='show_detail'),
+    path('edit/<int:id>/', views.edit_product, name='edit_product'),
+    path('delete/<int:id>/', views.delete_product, name='delete_product'),
 ]
