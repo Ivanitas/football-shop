@@ -45,10 +45,10 @@ def show_main(request):
     products = Product.objects.filter(user=request.user)
     
     context = {
-        'app_name': 'Cosmic Store',
-        'name': 'abhiseka.susanto',
+        'app_name': 'Football Shop',
+        'name': 'Muhammad Iffan Chalif Aziz',
         'username': request.user.username,
-        'class': 'PBP A',
+        'class': 'PBP B',
         'products': products,
         'last_login': request.COOKIES.get('last_login', 'Never'),
     }
