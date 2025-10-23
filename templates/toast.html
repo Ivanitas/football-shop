@@ -1,0 +1,19 @@
+<!-- Toast Container -->
+<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+    <!-- Toasts will be dynamically inserted here -->
+</div>
+
+<!-- Toast Template -->
+<template id="toastTemplate">
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+        <div class="toast-header">
+            <i class="fas fa-check-circle text-success me-2"></i>
+            <strong class="me-auto toast-title">Success</strong>
+            <small class="text-muted toast-time">just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body toast-message">
+            Operation completed successfully.
+        </div>
+    </div>
+</template>

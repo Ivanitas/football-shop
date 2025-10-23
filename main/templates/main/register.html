@@ -1,7 +1,7 @@
-{% extends 'main/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Register - Cosmic Store{% endblock %}
+{% block title %}Register - Football Shop{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
@@ -9,10 +9,10 @@
         <div class="card auth-card shadow">
             <div class="auth-header text-center text-white">
                 <h2 class="mb-3"><i class="fas fa-user-plus me-2"></i>Register</h2>
-                <p class="mb-0">Join Cosmic Store today</p>
+                <p class="mb-0">Join Football Shop today</p>
             </div>
             <div class="card-body p-4">
-                <form method="POST">
+                <form method="POST" id="registerForm">
                     {% csrf_token %}
                     {% for field in form %}
                     <div class="mb-3">
@@ -41,4 +41,9 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'js/auth_ajax.js' %}"></script>
 {% endblock %}
