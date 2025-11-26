@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from authentication.views_api import api_login, api_register, api_logout, api_check_auth
 
 app_name = 'main'
 
@@ -16,6 +17,10 @@ urlpatterns = [
     path('detail/<int:id>/', views.show_detail, name='show_detail'),
     path('edit/<int:id>/', views.edit_product, name='edit_product'),
     path('delete/<int:id>/', views.delete_product, name='delete_product'),
+    path('api/auth/login/', api_login, name='api_login'),
+    path('api/auth/register/', api_register, name='api_register'),
+    path('api/auth/logout/', api_logout, name='api_logout'),
+    path('api/auth/check/', api_check_auth, name='api_check_auth'),
     
     # AJAX URLs
     path('ajax/products/', views.ajax_get_products, name='ajax_get_products'),
